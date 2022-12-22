@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: password
+
+  web:
+    build: .
+    ports:
+      - 8000:8000
