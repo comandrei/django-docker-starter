@@ -1,8 +1,7 @@
 services:
   db:
     image: postgres:15
-    environment:
-      POSTGRES_PASSWORD: password
+    env_file: .env
 
   web:
     build: .
@@ -10,3 +9,8 @@ services:
       - 8000:8000
     volumes:
       - ./rocky:/app
+    env_file: .env
+    links:
+      - db
+    depends_on:
+      - db
