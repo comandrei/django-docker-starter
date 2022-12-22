@@ -2,6 +2,8 @@ services:
   db:
     image: postgres:15
     env_file: .env
+    volumes:
+      - ./local-db:/var/lib/postgresql/data
 
   web:
     build: .
