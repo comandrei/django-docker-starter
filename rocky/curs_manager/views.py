@@ -10,7 +10,13 @@ def salut(request):
     return HttpResponse("salutare")
 
 def studenti(request):
-    lista_studenti = Student.objects.all()
+    if 'an' in request.GET:
+        try:
+            lista_studenti = Student.objects.filter(an=request.GET['an'])
+        except ValueError:
+            lista_studenti = []
+    else: 
+        lista_studenti = Student.objects.all()
     context = {
         "studenti": lista_studenti
     }

@@ -11,7 +11,7 @@
         <h1>Lista Studenti</h1>
         <ol>
             {% for student in studenti %}
-            <li> {{ student.nume }} {{ student.prenume}} </li>
+            <li> {{ student.nume }} {{ student.prenume}} {{student.an}} </li>
             {% endfor %}
         </ol>
         {% comment %}{{ studenti }} <!-- context["studenti"] -->{% endcomment %}
