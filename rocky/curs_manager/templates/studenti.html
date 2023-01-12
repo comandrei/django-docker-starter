@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Lista studenti</title>
+        <style>
+            body {
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Lista Studenti</h1>
+        <ol>
+            {% for student in studenti %}
+            <li> {{ student.nume }} {{ student.prenume}} </li>
+            {% endfor %}
+        </ol>
+        {% comment %}{{ studenti }} <!-- context["studenti"] -->{% endcomment %}
+    </body>
+</html>
