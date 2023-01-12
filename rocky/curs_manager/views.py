@@ -13,3 +13,7 @@ def studenti(request):
     studenti_formatat = ", ".join(lista_studenti)
     studenti_formatat = "<br /> ".join(lista_studenti)
     return HttpResponse(studenti_formatat)
+
+
+def contact(request):
+    return render(request, "contact.html")
