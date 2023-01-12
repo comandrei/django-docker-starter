@@ -1,5 +1,7 @@
 First time setup
 ```
+cp .env-example .env
+# Alter any variables
 docker compose up db 
 CTRL-C
 docker compose up
