@@ -12,6 +12,7 @@
         <ol>
             {% for student in studenti %}
             <li> {{ student.nume }} {{ student.prenume}} {{student.an}} </li>
+            {% empty %} <li> Nu sunt inregistrari </li>
             {% endfor %}
         </ol>
         {% comment %}{{ studenti }} <!-- context["studenti"] -->{% endcomment %}
