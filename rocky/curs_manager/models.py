@@ -6,3 +6,4 @@ class Student(models.Model):
     prenume = models.TextField()
     an = models.IntegerField(default=1, db_index=True)
     telefon = models.TextField(null=True, blank=True)
+    cnp = models.IntegerField(unique=True, null=True, blank=True)
