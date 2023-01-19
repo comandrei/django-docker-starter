@@ -16,10 +16,21 @@ class Student(models.Model):
     cnp = models.CharField(unique=True, null=True, blank=True, max_length=13,
                                 validators=[MinLengthValidator(13), validate_no_a])
 
+    def __str__(self):
+        return f"{self.nume} {self.prenume} | an {self.an}"
+
 class Adresa(Student):
     strada = models.CharField(max_length=20)
     judet = models.CharField(max_length=15)
     cod_postal = models.IntegerField()
 
 
+class AdresaNoua(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    strada = models.CharField(max_length=20)
+    judet = models.CharField(max_length=15)
+    cod_postal = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.strada} {self.judet}"
             
