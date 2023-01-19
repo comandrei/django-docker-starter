@@ -45,3 +45,6 @@ class Curs(models.Model):
     nume = models.CharField(max_length=20)
     an = models.IntegerField()
     profesor = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.nume} {self.an}"
