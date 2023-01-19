@@ -15,4 +15,11 @@ class Student(models.Model):
     telefon = models.TextField(null=True, blank=True)
     cnp = models.CharField(unique=True, null=True, blank=True, max_length=13,
                                 validators=[MinLengthValidator(13), validate_no_a])
+
+class Adresa(Student):
+    strada = models.CharField(max_length=20)
+    judet = models.CharField(max_length=15)
+    cod_postal = models.IntegerField()
+
+
             
