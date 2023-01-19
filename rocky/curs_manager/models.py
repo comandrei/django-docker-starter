@@ -15,6 +15,7 @@ class Student(models.Model):
     telefon = models.TextField(null=True, blank=True)
     cnp = models.CharField(unique=True, null=True, blank=True, max_length=13,
                                 validators=[MinLengthValidator(13), validate_no_a])
+    cursuri = models.ManyToManyField("Curs")
 
     def __str__(self):
         return f"{self.nume} {self.prenume} | an {self.an}"
@@ -39,4 +40,8 @@ class StudentProfile(models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
     virsta = models.IntegerField()
 
-            
+
+class Curs(models.Model):
+    nume = models.CharField(max_length=20)
+    an = models.IntegerField()
+    profesor = models.CharField(max_length=20)
