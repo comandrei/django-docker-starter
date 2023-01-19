@@ -33,4 +33,10 @@ class AdresaNoua(models.Model):
 
     def __str__(self):
         return f"{self.strada} {self.judet}"
+
+
+class StudentProfile(models.Model):
+    student = models.OneToOneField(Student, on_delete=models.CASCADE)
+    virsta = models.IntegerField()
+
             

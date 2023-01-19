@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Student, Adresa, AdresaNoua
+from .models import Student, Adresa, AdresaNoua, StudentProfile
 # Register your models here.
 
 class StudentAdmin(admin.ModelAdmin):
@@ -18,3 +18,4 @@ class AdresaAdmin(admin.ModelAdmin):
     list_filter = ("student", )
 
 admin.site.register(AdresaNoua, AdresaAdmin)
+admin.site.register(StudentProfile)
