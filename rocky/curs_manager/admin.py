@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Student, Adresa, AdresaNoua, StudentProfile
+from .models import Student, Adresa, AdresaNoua, StudentProfile, Curs
 # Register your models here.
 
 class StudentAdmin(admin.ModelAdmin):
@@ -19,3 +19,4 @@ class AdresaAdmin(admin.ModelAdmin):
 
 admin.site.register(AdresaNoua, AdresaAdmin)
 admin.site.register(StudentProfile)
+admin.site.register(Curs)
