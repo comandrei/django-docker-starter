@@ -11,14 +11,14 @@ def salut(request):
 
 def studenti(request):
     lista_studenti = Student.objects.all()
-    
+
     if 'an' in request.GET:
         try:
-            lista_studenti = lista_studenti.filter(an=request.GET['an'])
+            lista_studenti = lista_studenti.filter(an__lte=request.GET['an'])
         except ValueError:
             lista_studenti = []
     if 'nume' in request.GET:
-        lista_studenti = lista_studenti.filter(nume=request.GET['nume'])
+        lista_studenti = lista_studenti.filter(nume__icontains=request.GET['nume'])
 
         
     context = {
