@@ -14,6 +14,9 @@ class StudentManager(models.Manager):
 
 # Create your models here.
 class Student(models.Model):
+    class Meta:
+        ordering = ("an", "nume", "prenume")
+
     nume = models.TextField()
     prenume = models.TextField()
     an = models.IntegerField(default=1, db_index=True)
