@@ -14,6 +14,7 @@ class StudentManager(models.Manager):
 
 # Create your models here.
 class Student(models.Model):
+
     class Meta:
         ordering = ("an", "nume", "prenume")
 
@@ -57,3 +58,16 @@ class Curs(models.Model):
 
     def __str__(self):
         return f"{self.nume} {self.an}"
+
+
+class Animal(models.Model):
+    class Meta:
+        abstract = True
+
+    nume = models.CharField(max_length=10)
+
+class Pisica(Animal):
+    culoare = models.CharField(max_length=10)
+    vieti = models.IntegerField(default=9)
+
+
