@@ -6,7 +6,11 @@
         <h1>Curs</h1>
         <ul>
         {% for curs in cursuri %}
-            <li>{{ curs }}</li>
+            <li>
+                <a href="/curs/{{curs.id}}">
+                    {{ curs }}
+                </a>
+            </li>
         {% endfor %}
         </ul>
     </body>

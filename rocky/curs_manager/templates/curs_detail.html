@@ -3,9 +3,14 @@
 
     </head>
     <body>
-        <h1>Curs {{ curs.nume }}</h1>
-        {{ curs }}
-       
-
+        <h1>Curs {{ curs.nume }} </h1>
+        {{ curs }} predat de {{ curs.profesor }}
+        <h2>Studenti inscrisi</h2>
+        <ul>
+        {% for student in studenti %}
+           <li>{{ student }}</li>
+        {% endfor %}
+        </ul>
+        <a href="/curs">Lista cursuri</a>
     </body>
 </html>

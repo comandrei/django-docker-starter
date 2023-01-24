@@ -44,8 +44,9 @@ def curs(request, curs_id):
     #curs = Curs.objects.first() # Curs.objects.all()[0]
     #curs = Curs.objects.all()[1]
     curs = get_object_or_404(Curs, id=curs_id)
-    #curs = Curs.objects.get(id=curs_id)
+    studenti_inscrisi = curs.student_set.all()
     context = {
-        "curs": curs
+        "curs": curs,
+        "studenti": studenti_inscrisi
     }
     return render(request, "curs_detail.html", context)
