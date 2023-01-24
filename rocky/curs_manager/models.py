@@ -17,6 +17,7 @@ class Student(models.Model):
 
     class Meta:
         ordering = ("an", "nume", "prenume")
+        unique_together = ("nume", "prenume", "an")
 
     nume = models.TextField()
     prenume = models.TextField()
