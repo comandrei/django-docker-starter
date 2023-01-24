@@ -70,4 +70,6 @@ class Pisica(Animal):
     culoare = models.CharField(max_length=10)
     vieti = models.IntegerField(default=9)
 
-
+class Caine(Animal):
+    culoare = models.CharField(max_length=10)
+    rasa = models.CharField(max_length=10)
