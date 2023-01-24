@@ -32,9 +32,10 @@ def contact(request):
     return render(request, "contact.html")
 
 
-def curs(request):
+def cursuri(request):
     cursuri = Curs.objects.all()
     context = {
         "cursuri": cursuri
     }
     return render(request, "curs.html", context)
+
