@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Student
+from .models import Student, Curs
 # Create your views here.
 
 def salut(request):
@@ -30,3 +30,11 @@ def studenti(request):
 
 def contact(request):
     return render(request, "contact.html")
+
+
+def curs(request):
+    cursuri = Curs.objects.all()
+    context = {
+        "cursuri": cursuri
+    }
+    return render(request, "curs.html", context)
