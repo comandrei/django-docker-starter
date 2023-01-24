@@ -22,7 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("salut", salut),
     path("studenti", studenti),
-    path("curs/<int:curs_id>", curs),
-    path("curs", cursuri),
+    path("curs/<int:curs_id>", curs, name="detaliu-curs"),
+    path("cursuri", cursuri, name="lista-cursuri"),
     path("contact", contact),
 ]
