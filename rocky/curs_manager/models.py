@@ -7,6 +7,11 @@ def validate_no_a(value):
     if "a" in value:
         raise ValidationError("Caracter nepermis")
 
+class StudentManager(models.Manager):
+
+    def boboci(self):
+        return self.filter(an=1)
+
 # Create your models here.
 class Student(models.Model):
     nume = models.TextField()
@@ -16,6 +21,7 @@ class Student(models.Model):
     cnp = models.CharField(unique=True, null=True, blank=True, max_length=13,
                                 validators=[MinLengthValidator(13), validate_no_a])
     cursuri = models.ManyToManyField("Curs")
+    objects = StudentManager()
 
     def __str__(self):
         return f"{self.nume} {self.prenume} | an {self.an}"

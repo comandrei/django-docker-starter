@@ -22,7 +22,8 @@ def studenti(request):
 
         
     context = {
-        "studenti": lista_studenti
+        "studenti": lista_studenti,
+        "boboci": Student.objects.boboci()
     }
     return render(request, "studenti.html", context)
 

@@ -15,6 +15,12 @@
             {% empty %} <li> Nu sunt inregistrari </li>
             {% endfor %}
         </ol>
+        <h2>Boboci</h2>
+        <ul>
+        {% for student in boboci %}
+          <li>{{ student }}</li>
+        {% endfor %}
+        </ul>
         {% comment %}{{ studenti }} <!-- context["studenti"] -->{% endcomment %}
     </body>
 </html>
