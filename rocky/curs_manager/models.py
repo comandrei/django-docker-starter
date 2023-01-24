@@ -58,7 +58,7 @@ class Curs(models.Model):
     profesor = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"{self.nume} {self.an}"
+        return f"{self.nume} {self.an} | Studenti {self.student_set.count()}"
 
 
 class Animal(models.Model):
