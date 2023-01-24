@@ -40,7 +40,7 @@ def cursuri(request):
     return render(request, "curs.html", context)
 
 
-def curs(request, curs_id):
+def curs(request, curs_nume, curs_id):
     #curs = Curs.objects.first() # Curs.objects.all()[0]
     #curs = Curs.objects.all()[1]
     curs = get_object_or_404(Curs, id=curs_id)

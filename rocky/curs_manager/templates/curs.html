@@ -7,7 +7,7 @@
         <ul>
         {% for curs in cursuri %}
             <li>
-                <a href="{% url 'detaliu-curs' curs.id %}">
+                <a href="{% url 'detaliu-curs' curs_nume=curs.nume curs_id=curs.id %}">
                     {{ curs }}
                 </a>
             </li>
