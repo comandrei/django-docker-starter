@@ -1,17 +1,18 @@
-<html>
-    <head>
-
-    </head>
-    <body>
-        <h1>Curs {{ my_var.nume }} </h1>
-        {{ my_var.nume }} predat de {{ my_var.profesor }}
+{% extends "base.html" %}
+{% block title %} Curs {{my_var.nume }} | {{ block.super }}{% endblock title%}
+{% block content %}
+<h1>Curs {{ my_var.nume }} </h1>
+        {{ my_var.nume }} predat de {{ my_var.profesor }} de anul {{ my_var.an }}
         {{ missing_var }}
         <h2>Studenti inscrisi</h2>
         <ul>
         {% for student in my_var.student_set.all %}
-           <li>{{ student }}</li>
+            {% if my_var.an == student.an %}
+             <li>{{ student }}</li>
+            {% else %}
+             <li> {{student | upper }} - restantier</li>
+            {% endif %}
         {% endfor %}
         </ul>
         <a href="{% url 'lista-cursuri' %}">Lista cursuri</a>
-    </body>
-</html>
+{% endblock content %}
