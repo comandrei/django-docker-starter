@@ -26,12 +26,12 @@ def studenti(request):
         "studenti": lista_studenti,
         "boboci": Student.objects.boboci()
     }
-    return render(request, "studenti.html", context)
+    return render(request, "nume_fisier.html", context)
 
 
 
 def contact(request):
-    return render(request, "contact.html")
+    return render(request, "public/contact.html")
 
 
 def cursuri(request):
