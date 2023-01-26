@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "debug_toolbar",
-    "curs_manager"
+    "curs_manager",
+    "app2",
 ]
 
 MIDDLEWARE = [
