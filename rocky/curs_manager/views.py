@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.db.models import F
 
 from .models import Student, Curs
 # Create your views here.
@@ -51,3 +52,20 @@ def curs(request, curs_nume, curs_id):
         "studenti": studenti_inscrisi
     }
     return render(request, "curs_detail.html", context)
+
+def promoveaza_an(request, param_an):
+    studenti = Student.objects.filter(an=param_an)
+    context = {
+        "studenti": studenti
+    }
+    # for student in studenti:
+    #     student.an = student.an + 1
+    #     student.save()
+    #studenti.update(an=param+1)
+    #studenti.update(an=1)
+
+    studenti = Student.objects.all()
+    studenti.update(an=F('an') + 1)
+
+
+    return render(request, "promovare.html", context)
