@@ -34,7 +34,7 @@ def contact(request):
 
 
 def cursuri(request):
-    cursuri = Curs.objects.all()
+    cursuri = Curs.objects.all().prefetch_related("student_set")
     context = {
         "cursuri": cursuri
     }
