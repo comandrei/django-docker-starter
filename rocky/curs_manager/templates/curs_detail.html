@@ -3,11 +3,12 @@
 
     </head>
     <body>
-        <h1>Curs {{ curs.nume }} </h1>
-        {{ curs }} predat de {{ curs.profesor }}
+        <h1>Curs {{ my_var.nume }} </h1>
+        {{ my_var.nume }} predat de {{ my_var.profesor }}
+        {{ missing_var }}
         <h2>Studenti inscrisi</h2>
         <ul>
-        {% for student in studenti %}
+        {% for student in my_var.student_set.all %}
            <li>{{ student }}</li>
         {% endfor %}
         </ul>
