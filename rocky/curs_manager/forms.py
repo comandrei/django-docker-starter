@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 class ContactForm(forms.Form):
     nume = forms.CharField()
     email = forms.EmailField()
-    mesaj = forms.CharField(widget=forms.Textarea(attrs={"rows": "5"}))
+    mesaj = forms.CharField(widget=forms.Textarea(attrs={"rows": "5", "class": "blue"}))
     multumit = forms.BooleanField(required=False)
 
     def clean_email(self):
