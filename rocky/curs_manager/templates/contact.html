@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ formular.as_p }}
+    <input type="submit" value="Trimite">
+</form>
+{% endblock content %}

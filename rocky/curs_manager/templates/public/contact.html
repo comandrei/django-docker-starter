@@ -4,5 +4,18 @@
     </head>
     <body>
         <h1> Contact</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            Nume:<input type="text" name="nume" required> <br>
+            Email: <input type="email" name="email" required> <br>
+            Mesaj: <textarea name="mesaj" required></textarea><br>
+            <input type="submit" value="Trimite">
+        </form>
+        <h1> Date din GET</h1>
+        {{ request.GET }}
+        <h1> Date din POST</h1>
+         {{ request.POST }}
+         <h2>Mesaj</h2>
+           {{ request.POST.mesaj }}
     </body>
 </html>

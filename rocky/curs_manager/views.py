@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.db.models import F
 
+from .forms import ContactForm
 from .models import Student, Curs
 # Create your views here.
 
@@ -33,6 +34,12 @@ def studenti(request):
 def contact(request):
     return render(request, "public/contact.html")
 
+def contact_2(request):
+    formular = ContactForm()
+    context = {
+        "formular": formular
+    }
+    return render(request, "contact.html", context)
 
 def cursuri(request):
     cursuri = Curs.objects.all().prefetch_related("student_set")

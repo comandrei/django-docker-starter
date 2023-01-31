@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from curs_manager.views import salut, studenti, contact, cursuri, curs, promoveaza_an
+from curs_manager.views import salut, studenti, contact, cursuri, curs, promoveaza_an, contact_2
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,6 +25,7 @@ urlpatterns = [
     path("curs/<str:curs_nume>-<int:curs_id>", curs, name="detaliu-curs"),
     path("cursuri", cursuri, name="lista-cursuri"),
     path("contact", contact),
+    path("contact/", contact_2),
     path("promoveaza/<int:param_an>", promoveaza_an),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
