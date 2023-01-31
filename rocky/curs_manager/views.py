@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.db.models import F
 
@@ -35,16 +35,14 @@ def contact(request):
     return render(request, "public/contact.html")
 
 def contact_2(request):
-    mesaj = None
     if request.method == "POST":
         formular = ContactForm(request.POST)
         if formular.is_valid():
-            mesaj = "Multumim"
+            return redirect("/cursuri")
     else:
         formular = ContactForm()
     context = {
         "formular": formular,
-        "mesaj": mesaj
     }
     return render(request, "contact.html", context)
 
