@@ -35,9 +35,16 @@ def contact(request):
     return render(request, "public/contact.html")
 
 def contact_2(request):
-    formular = ContactForm()
+    mesaj = None
+    if request.method == "POST":
+        formular = ContactForm(request.POST)
+        if formular.is_valid():
+            mesaj = "Multumim"
+    else:
+        formular = ContactForm()
     context = {
-        "formular": formular
+        "formular": formular,
+        "mesaj": mesaj
     }
     return render(request, "contact.html", context)
 
