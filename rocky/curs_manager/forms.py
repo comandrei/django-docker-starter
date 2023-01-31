@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class ContactForm(forms.Form):
-    nume = forms.CharField()
+    nume = forms.CharField(label="Numele tau")
     email = forms.EmailField()
     mesaj = forms.CharField(widget=forms.Textarea(attrs={"rows": "5", "class": "black"}))
     multumit = forms.BooleanField(required=False)
