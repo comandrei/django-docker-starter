@@ -11,7 +11,11 @@
 </style>
 <form method="POST" action="" id="my_form">
     {% csrf_token %}
-    {{ formular.as_p }}
+    {{ formular.errors }}
+    {% for camp in formular %}
+      {{ camp.errors }} 
+      {{camp.label}}: {{ camp }}
+    {% endfor %}
     <input type="submit" value="Trimite">
 </form>
   {{ mesaj }}
