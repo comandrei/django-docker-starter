@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="POST" action="">
+<style>
+    #my_form {
+        color: blue;
+    }
+    .black {
+        color: black;
+        border: 3px solid red;
+    }
+</style>
+<form method="POST" action="" id="my_form">
     {% csrf_token %}
     {{ formular.as_p }}
     <input type="submit" value="Trimite">
