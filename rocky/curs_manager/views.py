@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.http import HttpResponse
 from django.db.models import F
 
@@ -86,8 +87,9 @@ def add_curs(request):
     if request.method == "POST":
         form = CursForm(data=request.POST)
         if form.is_valid():
-            form.save()
-            mesaj = "S-a salvat"
+            result = form.save()
+            return redirect(
+                reverse("detaliu-curs", kwargs={"curs_nume": result.nume, "curs_id": result.id}))
     else:
         form = CursForm()
     context = {
