@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from .models import Curs
+
 class ContactForm(forms.Form):
     nume = forms.CharField(label="Numele tau")
     email = forms.EmailField()
@@ -11,3 +13,9 @@ class ContactForm(forms.Form):
         value = self.cleaned_data["email"]
         if not value.endswith("@gmail.com"):
             raise ValidationError("Trebuie sa fie o adresa gmail")
+
+
+class CursForm(forms.ModelForm):
+    class Meta:
+        model = Curs
+        fields = "__all__"

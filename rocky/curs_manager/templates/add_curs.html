@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+{% block content %}
+Adauga Curs
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Salveaza">
+</form>
+{% endblock content %}

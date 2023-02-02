@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.db.models import F
 
-from .forms import ContactForm
+from .forms import ContactForm, CursForm
 from .models import Student, Curs
 # Create your views here.
 
@@ -79,3 +79,11 @@ def promoveaza_an(request, param_an):
 
 
     return render(request, "promovare.html", context)
+
+
+def add_curs(request):
+    form = CursForm()
+    context = {
+        "form": form
+    }
+    return render(request, "add_curs.html", context)
