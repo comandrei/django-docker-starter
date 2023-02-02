@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.http import HttpResponse
 from django.db.models import F
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 
 from .forms import ContactForm, CursForm, LoginForm
 from .models import Student, Curs
@@ -132,3 +132,7 @@ def login(request):
         "form": form
     }
     return render(request, "login.html", context)
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")

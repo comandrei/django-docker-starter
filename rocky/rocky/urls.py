@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from curs_manager.views import salut, studenti, contact, cursuri, curs, promoveaza_an, contact_2, add_curs, edit_curs, login
+from curs_manager.views import salut, studenti, contact, cursuri, curs, promoveaza_an, contact_2, add_curs, edit_curs, login, logout_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("salut", salut),
     path("studenti", studenti),
     path("login", login),
+    path("logout", logout_view),
     path("curs/<str:curs_nume>-<int:curs_id>", curs, name="detaliu-curs"),
     path("curs/<str:curs_nume>-<int:curs_id>/edit", edit_curs),
     path("cursuri", cursuri, name="lista-cursuri"),
