@@ -22,3 +22,7 @@ class CursForm(forms.ModelForm):
         fields = ["nume", "an"] # exclude = ["profesor"]
 
     #profesor = forms.CharField(label="Numele profesorului", widget=forms.TextInput(attrs={"placeholder": "numele profesorului"}))
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)

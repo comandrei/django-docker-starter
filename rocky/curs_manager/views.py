@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.http import HttpResponse
 from django.db.models import F
+from django.contrib.auth import authenticate
 
-from .forms import ContactForm, CursForm
+from .forms import ContactForm, CursForm, LoginForm
 from .models import Student, Curs
 # Create your views here.
 
@@ -112,3 +113,22 @@ def edit_curs(request, curs_nume, curs_id):
         "form": form
     }
     return render(request, "add_curs.html", context)
+
+def login(request):
+    if request.method == "POST":
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            user_username = form.cleaned_data["username"]
+            user_password = form.cleaned_data["password"]
+            user = authenticate(username=user_username, password=user_password)
+
+            if user is not None:
+               return redirect('/')
+            else:
+                return redirect('/cursuri')
+    else:
+        form = LoginForm()
+    context = {
+        "form": form
+    }
+    return render(request, "login.html", context)
