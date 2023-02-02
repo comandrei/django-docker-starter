@@ -97,3 +97,18 @@ def add_curs(request):
         "mesaj": mesaj
     }
     return render(request, "add_curs.html", context)
+
+def edit_curs(request, curs_nume, curs_id):
+    curs_obj = get_object_or_404(Curs, id=curs_id)
+    if request.method == "POST":
+        form = CursForm(data=request.POST, instance=curs_obj)
+        if form.is_valid():
+            result = form.save()
+            return redirect(
+                reverse("detaliu-curs", kwargs={"curs_nume": result.nume, "curs_id": result.id}))
+    else:
+        form = CursForm(instance=curs_obj)
+    context = {
+        "form": form
+    }
+    return render(request, "add_curs.html", context)
