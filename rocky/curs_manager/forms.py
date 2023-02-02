@@ -19,3 +19,5 @@ class CursForm(forms.ModelForm):
     class Meta:
         model = Curs
         fields = "__all__"
+
+    profesor = forms.CharField(label="Numele profesorului", widget=forms.TextInput(attrs={"placeholder": "numele profesorului"}))
