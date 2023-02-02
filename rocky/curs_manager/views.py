@@ -82,8 +82,16 @@ def promoveaza_an(request, param_an):
 
 
 def add_curs(request):
-    form = CursForm()
+    mesaj = None
+    if request.method == "POST":
+        form = CursForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            mesaj = "S-a salvat"
+    else:
+        form = CursForm()
     context = {
-        "form": form
+        "form": form,
+        "mesaj": mesaj
     }
     return render(request, "add_curs.html", context)

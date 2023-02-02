@@ -1,6 +1,11 @@
 {% extends "base.html"%}
 {% block content %}
 Adauga Curs
+
+{% if mesaj %}
+  <h2>{{ mesaj }}</h2>
+{% endif %}
+
 <form method="POST" action="">
     {% csrf_token %}
     {{ form.as_p }}
