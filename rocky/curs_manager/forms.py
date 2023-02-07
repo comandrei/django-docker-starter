@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Curs
+from .models import Curs, Student
 
 class ContactForm(forms.Form):
     nume = forms.CharField(label="Numele tau")
@@ -26,3 +26,15 @@ class CursForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = "__all__"
+
+    def clean_nume(self):
+        value = self.cleaned_data["nume"]
+        if value[0].islower():
+            raise forms.ValidationError("Numele trebuie sa inceapa cu litera mare")
+

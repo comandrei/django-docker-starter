@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db.models import F
 from .models import Student, Adresa, AdresaNoua, StudentProfile, Curs
+from .forms import StudentForm
 # Register your models here.
 
 @admin.action(description="Promovare custom")
@@ -14,6 +15,7 @@ def promovare_studenti(modeladmin, request, queryset):
 
 
 class StudentAdmin(admin.ModelAdmin):
+    # list-related options
     list_display = ("nume", "prenume", "an")
     list_filter = ("an", ("cursuri", admin.RelatedOnlyFieldListFilter), "adresanoua")
     list_per_page = 3
@@ -21,6 +23,18 @@ class StudentAdmin(admin.ModelAdmin):
     search_fields = ("nume", "prenume")
     actions = (promovare_studenti, )
     change_list_template = "admin/change_list_student.html"
+    # change related options
+    readonly_fields = ("an", )
+    fieldsets = (
+        ("", {
+          'fields': ["prenume", "nume", "an"]  
+        }),
+        ("Date de contact", {
+            'fields': ['telefon'],
+            'classes': ['collapse']
+        })
+    )
+    form = StudentForm
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
