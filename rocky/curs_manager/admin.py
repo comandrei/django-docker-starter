@@ -15,11 +15,12 @@ def promovare_studenti(modeladmin, request, queryset):
 
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("nume", "prenume", "an")
-    list_filter = ("an", ("cursuri", admin.RelatedOnlyFieldListFilter))
+    list_filter = ("an", ("cursuri", admin.RelatedOnlyFieldListFilter), "adresa")
     list_per_page = 3
     # Student.objects.filter(Q(nume__icontains=request.GET["q"]) | Q(prenume__icontains=request.GET["q"]))
     search_fields = ("nume", "prenume")
     actions = (promovare_studenti, )
+    change_list_template = "admin/change_list_student.html"
 
 admin.site.register(Student, StudentAdmin)
 
