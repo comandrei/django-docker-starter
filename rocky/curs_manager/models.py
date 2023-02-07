@@ -32,12 +32,16 @@ class Student(models.Model):
         return f"{self.nume} {self.prenume} | an {self.an}"
 
 class Adresa(Student):
+    class Meta:
+        verbose_name_plural = "adrese"
     strada = models.CharField(max_length=20)
     judet = models.CharField(max_length=15)
     cod_postal = models.IntegerField()
 
 
 class AdresaNoua(models.Model):
+    class Meta:
+        verbose_name_plural = "Adrese Noi"
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     strada = models.CharField(max_length=20)
     judet = models.CharField(max_length=15)
@@ -53,6 +57,9 @@ class StudentProfile(models.Model):
 
 
 class Curs(models.Model):
+    class Meta:
+        verbose_name_plural = "cursuri"
+
     nume = models.CharField(max_length=20)
     an = models.IntegerField()
     profesor = models.CharField(max_length=20)
