@@ -3,7 +3,8 @@ from django.db.models import F
 from .models import Student, Adresa, AdresaNoua, StudentProfile, Curs
 # Register your models here.
 
-def promovare(modeladmin, request, queryset):
+@admin.action(description="Promovare custom")
+def promovare_studenti(modeladmin, request, queryset):
     queryset.update(an=F('an') + 1)
     # Varianta cu mai multe query-uri
     # for student in queryset:
@@ -18,7 +19,7 @@ class StudentAdmin(admin.ModelAdmin):
     list_per_page = 3
     # Student.objects.filter(Q(nume__icontains=request.GET["q"]) | Q(prenume__icontains=request.GET["q"]))
     search_fields = ("nume", "prenume")
-    actions = (promovare, )
+    actions = (promovare_studenti, )
 
 admin.site.register(Student, StudentAdmin)
 
