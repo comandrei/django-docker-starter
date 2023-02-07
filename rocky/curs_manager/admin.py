@@ -5,7 +5,8 @@ from .models import Student, Adresa, AdresaNoua, StudentProfile, Curs
 
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("nume", "prenume", "an")
-    list_filter = ("an", "cursuri")
+    list_filter = ("an", ("cursuri", admin.RelatedOnlyFieldListFilter))
+    list_per_page = 3
     # Student.objects.filter(Q(nume__icontains=request.GET["q"]) | Q(prenume__icontains=request.GET["q"]))
     search_fields = ("nume", "prenume")
 
