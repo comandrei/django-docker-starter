@@ -15,12 +15,19 @@ def promovare_studenti(modeladmin, request, queryset):
 
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("nume", "prenume", "an")
-    list_filter = ("an", ("cursuri", admin.RelatedOnlyFieldListFilter), "adresa")
+    list_filter = ("an", ("cursuri", admin.RelatedOnlyFieldListFilter), "adresanoua")
     list_per_page = 3
     # Student.objects.filter(Q(nume__icontains=request.GET["q"]) | Q(prenume__icontains=request.GET["q"]))
     search_fields = ("nume", "prenume")
     actions = (promovare_studenti, )
     change_list_template = "admin/change_list_student.html"
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        qs.prefetch_related('cursuri').select_related('adresanoua')
+        if request.user.first_name == "nume":
+            return qs.none()
+        return qs
 
 admin.site.register(Student, StudentAdmin)
 
