@@ -3,5 +3,9 @@ from django.contrib import admin
 
 from .models import Intrebare, VariantaRaspuns
 
+class VariantaRaspunsAdmin(admin.ModelAdmin):
+    list_display = ("intrebare", "text", "corect")
+    list_filter = ("intrebare", "corect")
+
 admin.site.register(Intrebare)
-admin.site.register(VariantaRaspuns)
+admin.site.register(VariantaRaspuns, VariantaRaspunsAdmin)
