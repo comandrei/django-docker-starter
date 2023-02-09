@@ -19,6 +19,7 @@ from django.urls import path, include
 from curs_manager.views import salut, studenti, contact, cursuri, curs, promoveaza_an, contact_2, add_curs, edit_curs, login, logout_view
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path("admin/", admin.site.urls),
     path("salut", salut),
     path("studenti", studenti),
