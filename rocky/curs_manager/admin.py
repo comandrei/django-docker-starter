@@ -51,6 +51,11 @@ class AdresaAdmin(admin.ModelAdmin):
     list_display = ("strada", "judet", "student")
     list_filter = ("student", )
 
+class CursAdmin(admin.ModelAdmin):
+    list_display = ("nume", "an", "profesor")
+    list_filter = ("an", )
+    search_fields = ("nume", "profesor")
+
 admin.site.register(AdresaNoua, AdresaAdmin)
 admin.site.register(StudentProfile)
-admin.site.register(Curs)
+admin.site.register(Curs, CursAdmin)
