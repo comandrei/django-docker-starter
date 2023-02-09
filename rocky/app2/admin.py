@@ -7,5 +7,15 @@ class VariantaRaspunsAdmin(admin.ModelAdmin):
     list_display = ("intrebare", "text", "corect")
     list_filter = ("intrebare", "corect")
 
-admin.site.register(Intrebare)
+class RaspunsInline(admin.StackedInline):
+    model = VariantaRaspuns
+    extra = 0
+    fieldsets = (
+        ("", {"fields": ["text", "corect", "feedback"]}),
+    )
+
+class IntrebareAdmin(admin.ModelAdmin):
+    inlines = (RaspunsInline, )
+
+admin.site.register(Intrebare, IntrebareAdmin)
 admin.site.register(VariantaRaspuns, VariantaRaspunsAdmin)
