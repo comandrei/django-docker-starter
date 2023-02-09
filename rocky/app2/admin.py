@@ -7,7 +7,7 @@ class VariantaRaspunsAdmin(admin.ModelAdmin):
     list_display = ("intrebare", "text", "corect")
     list_filter = ("intrebare", "corect")
 
-class RaspunsInline(admin.StackedInline):
+class RaspunsInline(admin.TabularInline):
     model = VariantaRaspuns
     extra = 0
     fieldsets = (
