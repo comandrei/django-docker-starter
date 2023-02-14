@@ -34,6 +34,10 @@ def studenti(request):
 
 
 def contact(request):
+    if "view_count" in request.session:
+        request.session["view_count"] += 1
+    else:
+        request.session["view_count"] = 0 
     return render(request, "public/contact.html")
 
 def contact_2(request):

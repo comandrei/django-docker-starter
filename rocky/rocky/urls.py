@@ -34,3 +34,4 @@ urlpatterns = [
     path("promoveaza/<int:param_an>", promoveaza_an),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
+
