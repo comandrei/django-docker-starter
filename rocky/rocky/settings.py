@@ -56,6 +56,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "curs_manager.middleware.view_counter_middleware",
+
 ]
 
 ROOT_URLCONF = "rocky.urls"
