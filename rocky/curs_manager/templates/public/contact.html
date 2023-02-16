@@ -19,5 +19,6 @@
            {{ request.POST.mesaj }}
         <h2> Date din sesiune</h2>
            {{ request.session.view_count }}
+        Current user: {{ request.user.username }}
     </body>
 </html>

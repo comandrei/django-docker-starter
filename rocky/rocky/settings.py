@@ -140,3 +140,9 @@ STATIC_ROOT = "dist/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SHOW_TOOLBAR_CALLBACK = lambda *args, **kwargs: True
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache"
+    }
+}

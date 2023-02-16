@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.db.models import F
 from django.contrib.auth import authenticate, logout
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 
 from .forms import ContactForm, CursForm, LoginForm
 from .models import Student, Curs
@@ -33,6 +35,7 @@ def studenti(request):
 
 
 
+@cache_page(60)
 def contact(request):
     if "view_count" in request.session:
         request.session["view_count"] += 1
@@ -53,7 +56,11 @@ def contact_2(request):
     return render(request, "contact.html", context)
 
 def cursuri(request):
-    cursuri = Curs.objects.all().prefetch_related("student_set")
+    cursuri = cache.get("cursuri")
+    if cursuri is None:
+        cursuri = Curs.objects.all().prefetch_related("student_set")
+        cache.set("cursuri", cursuri, 60)
+
     context = {
         "cursuri": cursuri
     }
