@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
 from curs_manager.views import salut, studenti, contact, cursuri, curs, promoveaza_an, contact_2, add_curs, edit_curs, login, logout_view
 
@@ -33,5 +34,6 @@ urlpatterns = [
     path("contact/", contact_2),
     path("promoveaza/<int:param_an>", promoveaza_an),
     path('__debug__/', include('debug_toolbar.urls')),
+    path("static/", static),
 ]
 

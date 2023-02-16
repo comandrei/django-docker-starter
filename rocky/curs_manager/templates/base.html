@@ -1,12 +1,8 @@
+{% load static %}
 <html>
     <head>
         <title>{% block title %} Curs Manager {% endblock title %}</title>
-        <style>
-            body {
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                color: red;
-            }
-        </style>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
         {% block content %}
