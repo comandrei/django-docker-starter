@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+from rest_framework import routers
 
 from curs_manager.views import salut, studenti, contact, cursuri, curs, promoveaza_an, contact_2, add_curs, edit_curs, login, logout_view
+from curs_manager.viewsets import StudentViewSet
+
+router = routers.DefaultRouter()
+router.register("student", StudentViewSet)
 
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
@@ -35,5 +40,6 @@ urlpatterns = [
     path("promoveaza/<int:param_an>", promoveaza_an),
     path('__debug__/', include('debug_toolbar.urls')),
     path("static/", static),
+    path("api/", include(router.urls))
 ]
 

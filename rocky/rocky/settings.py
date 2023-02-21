@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "curs_manager",
     "app2",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
