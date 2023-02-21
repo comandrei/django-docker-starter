@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand
 
 from curs_manager.models import Student
 
+
 def exporta_studenti(student_qs):
     with open("students.csv", "w") as f:
         fieldnames = ["nume", "prenume", "an", "cnp"]
@@ -19,6 +20,12 @@ def exporta_studenti(student_qs):
             writer.writerow(student_row)
 
 class Command(BaseCommand):
-    def handle(self, *args, **kwargs):
-        studenti = Student.objects.all()
+    def add_arguments(self, parser):
+        parser.add_argument("--an", type=int)
+
+    def handle(self, *args, **options):
+        if options['an']:
+            studenti = Student.objects.filter(an=options['an'])
+        else:
+            studenti = Student.objects.all()
         exporta_studenti(studenti)
